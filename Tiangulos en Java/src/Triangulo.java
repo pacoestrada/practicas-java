@@ -36,17 +36,18 @@ public class Triangulo extends JFrame implements ActionListener {
         panel.add(new JLabel(""));
         panel.add(boton);
 
-        // Mensaje de resultado
+        // Panel para mostrar el resultado
+        JPanel panelResultado = new JPanel();
         mensaje = new JLabel("");
+        mensaje.setFont(new Font("Arial", Font.BOLD, 16));
         mensaje.setHorizontalAlignment(JLabel.CENTER);
-        mensaje.setVerticalAlignment(JLabel.TOP);
-        mensaje.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-        panel.add(mensaje);
+        panelResultado.add(mensaje);
 
         // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(panel);
-        pack();
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.NORTH);
+        add(panelResultado, BorderLayout.CENTER);
         setSize(400, 250);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -63,15 +64,15 @@ public class Triangulo extends JFrame implements ActionListener {
         if (a + b > c && a + c > b && b + c > a) {
             // Si se puede formar un triángulo, se determina su tipo
             if (a == b && b == c) {
-                mensaje.setText("<html>Se puede formar un triángulo equilátero.</html>");
+                mensaje.setText("Se puede formar un triángulo equilátero.");
             } else if (a == b || a == c || b == c) {
-                mensaje.setText("<html>Se puede formar un triángulo isósceles.</html>");
+                mensaje.setText("Se puede formar un triángulo isósceles.");
             } else {
-                mensaje.setText("<html>Se puede formar un triángulo escaleno.</html>");
+                mensaje.setText("Se puede formar un triángulo escaleno.");
             }
         } else {
             // Si no se puede formar un triángulo, se muestra un mensaje de error
-            mensaje.setText("<html>No se puede formar un triángulo con los lados ingresados.</html>");
+            mensaje.setText("No se puede formar un triángulo con los lados ingresados.");
         }
     }
 
